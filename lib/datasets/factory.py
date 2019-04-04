@@ -11,12 +11,20 @@ from __future__ import division
 from __future__ import print_function
 
 __sets = {}
+from datasets.lofar import lofar
 from datasets.pascal_voc import pascal_voc
 from datasets.coco import coco
 from datasets.imagenet import imagenet
 from datasets.vg import vg
 
 import numpy as np
+
+# Set up lofar_<dataset_version>_<split>
+for dataset_version in ['test1']:
+  for split in ['train', 'val', 'trainval', 'test']:
+    name = 'lofar_{}_{}'.format(dataset_version, split)
+    __sets[name] = (lambda split=split, dataset_version=dataset_version: lofar(split,
+        dataset_version))
 
 # Set up voc_<year>_<split>
 for year in ['2007', '2012']:

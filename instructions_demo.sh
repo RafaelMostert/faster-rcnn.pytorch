@@ -2,7 +2,7 @@
 echo "Activating conda env."
 source activate pytorch0.4.0
 
-GPU_ID=1
+GPU_ID=7
 SESSION=1
 EPOCH=1
 CHECKPOINT=2504
