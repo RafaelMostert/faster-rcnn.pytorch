@@ -4,7 +4,7 @@ echo "Start train script! (test time: unknown yet)"
 echo "Activating conda env."
 source activate pytorch0.4.0
 
-GPU_ID=3
+GPU_ID=4
 BATCH_SIZE=4
 WORKER_NUMBER=1
 LEARNING_RATE=0.001
