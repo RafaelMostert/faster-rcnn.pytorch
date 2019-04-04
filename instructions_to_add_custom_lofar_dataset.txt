@@ -1,0 +1,47 @@
+### Instructions on how to train a custom lofar dataset ###
+
+Loosely following https://github.com/rbgirshick/py-faster-rcnn/issues/243
+
+Forked faster-rcnn.pytorch.
+
+Downloaded to Tritanium (git clone etc)
+source the right conda environment with pytorch 0.4.0 etc.
+cd lib and sh make.sh
+
+Download pretrained model 'vgg16_caffe.pth' and move to data/pretrained_model  
+
+
+Added to factory.py:
+"""
+from datasets.lofar import lofar
+
+ 22 # Set up lofar_<dataset_version>_<split>
+ 23 for dataset_version in ['test1']:
+ 24   for split in ['train', 'val', 'trainval', 'test']:
+ 25     name = 'lofar_{}_{}'.format(dataset_version, split)
+ 26     __sets[name] = (lambda split=split, dataset_version=dataset_version: lofar(split,
+ 27         dataset_version))
+
+"""
+
+Added lofar.py and lofar_eval.py analogue to pascal_voc.py and voc_eval.py.
+Refactored some variable names (notably 'voc' and 'pascal').
+Change class names to ('__background__', '0', '1', '2', '3', '4', '5')
+NOTE I CHANGED THE INTEGERS TO STRINGS for easy compatibility
+
+Changed classname 'name' to 'n_comp'. Adding in second class 'n_peak' will follow later.
+
+Decide what folder structure will be used for data. Mostly using PASCAL VOC structure.
+Make sure that this folder structure is reflected by lofar.py and lofar_eval.py and the data and label creation scripts in the  lofar_frcnn_tools repository.
+
+Create a /models dir and insert a pretrained VOC model.
+
+Copy /lib/model/utils/config.py to /lib/model/utils/config_old.py as backup
+change the config file if needed
+
+Adjust train_net.py, test_net.py and demo.py
+
+
+OMG IT IS RUNNING! :O
+started at 00:27
+
