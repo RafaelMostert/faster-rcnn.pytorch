@@ -1,4 +1,4 @@
-# Activate virtualenv containing pytorch 1.0 and opencv, etc.
+# Activate virtualenv containing pytorch 0.4.0 and opencv, etc.
 echo "Activating conda env."
 source activate pytorch0.4.0
 
