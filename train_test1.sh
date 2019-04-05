@@ -16,7 +16,7 @@ CUDA_VISIBLE_DEVICES=$GPU_ID python lofar_trainval_net.py \
                    --bs $BATCH_SIZE --nw $WORKER_NUMBER \
                    --s $SESSION \
                    --lr $LEARNING_RATE --lr_decay_step $DECAY_STEP \
-                   --cuda --cag
+                   --cuda
 # Note that class agnostig is set to true now
 
 echo "Deactivating conda env."
