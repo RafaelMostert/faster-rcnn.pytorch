@@ -2,10 +2,10 @@
 echo "Activating conda env."
 source activate pytorch0.4.0
 
-GPU_ID=7
+GPU_ID=4
 SESSION=1
-EPOCH=1
-CHECKPOINT=2504
+EPOCH=20
+CHECKPOINT=39
 
 echo "Run demo.py"
 CUDA_VISIBLE_DEVICES=$GPU_ID python demo.py --net vgg16 \

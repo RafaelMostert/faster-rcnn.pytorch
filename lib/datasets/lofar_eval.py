@@ -19,9 +19,8 @@ def parse_rec(filename):
   objects = []
   for obj in tree.findall('object'):
     obj_struct = {}
-    obj_struct['name'] = obj.find('name').text
-    obj_struct['pose'] = obj.find('pose').text
-    obj_struct['truncated'] = int(obj.find('truncated').text)
+    obj_struct['n_comp'] = obj.find('n_comp').text
+    obj_struct['n_peak'] = obj.find('n_peak').text
     obj_struct['difficult'] = int(obj.find('difficult').text)
     bbox = obj.find('bndbox')
     obj_struct['bbox'] = [int(bbox.find('xmin').text),
@@ -108,7 +107,7 @@ def lofar_eval(detpath,
     lines = f.readlines()
   imagenames = [x.strip() for x in lines]
 
-  if not os.path.isfile(cachefile):
+  if True or not os.path.isfile(cachefile):
     # load annotations
     recs = {}
     for i, imagename in enumerate(imagenames):
@@ -132,6 +131,10 @@ def lofar_eval(detpath,
   class_recs = {}
   npos = 0
   for imagename in imagenames:
+    print(imagename)
+    print(parse_rec(annopath.format(imagename)))
+    print(type(recs))
+    [print(obj) for obj in recs[imagename]]
     R = [obj for obj in recs[imagename] if obj['n_comp'] == classname]
     bbox = np.array([x['bbox'] for x in R])
     difficult = np.array([x['difficult'] for x in R]).astype(np.bool)

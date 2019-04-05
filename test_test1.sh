@@ -4,7 +4,7 @@ echo "This script takes roughly half an hour to run (test time: ?)"
 echo "Activating conda env."
 source activate pytorch0.4.0
 
-GPU_ID=1
+GPU_ID=4
 SESSION=1
 EPOCH=20
 CHECKPOINT=39
