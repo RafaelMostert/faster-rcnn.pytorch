@@ -9,7 +9,7 @@ SESSION=2
 BATCH_SIZE=4
 WORKER_NUMBER=1
 LEARNING_RATE=0.001
-DECAY_STEP=3  # Measured in epochs, decay will possibly only take place once?
+DECAY_STEP=5  # Measured in epochs, decay will possibly only take place once?
 echo "Run lofar_trainval_net.py"
 CUDA_VISIBLE_DEVICES=$GPU_ID python trainval_net.py \
                    --dataset lofar --net vgg16 \
